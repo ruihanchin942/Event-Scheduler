@@ -1,0 +1,53 @@
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
+
+#profile{
+	padding:50px;
+	border:1px dashed grey;
+	font-size:20px;
+	background-color:#DCE6F7;
+}
+
+#login{
+
+	width:300px;
+	float: left;
+	border-radius: 10px;
+	font-family:raleway;
+	border: 2px solid #ccc;
+	padding: 10px 40px 25px;
+	margin-top: 70px;
+}
+
+#logout{
+	float:right;
+	padding:5px;
+	border:dashed 1px gray;
+}
+
+.error_msg{
+	color:red;
+	font-size: 16px;
+}
+
+.message{
+	position: absolute;
+	font-weight: bold;
+	font-size: 16px;
+	color: black;
+	left: 262px;
+	width: 500px;
+}
+
+.calendar{
+	font-family: Arial;
+	font-size: 12px;
+}
+
+table.calendar{
+	margin: auto;
+	border-collapse: collapse;
+}
+
