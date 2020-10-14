@@ -15,6 +15,10 @@ class Users extends CI_Controller
 		//$this->load->view('calendar_home');
 	}
 
+	public function test(){
+		$this->load->view('mainpage');
+	}
+
 	public function signupform(){
 		$this->load->view('signup_form');
 		$this->load->view('templates/footer');
