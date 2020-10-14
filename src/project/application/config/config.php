@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://localhost/infs3202_project';
+$config['base_url'] = 'https://localhost/infs3202_project'; ##http://'.$_SERVER['HTTP_HOST'].'/infsproject/
 //https://infs3202-dbe1acac.uqcloud.net/infs3202_project
 //https://localhost/infs3202_project
 
