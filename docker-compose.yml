@@ -1,31 +1,61 @@
 version: "3.3"
   
 services:
-  db:
-    image: mysql
-    container_name: mysql
+  db-master:
+    image: mysql:5.6
+    container_name: mysql_master
     ports:
       - "3306:3306"
     restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: root 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_REPLICATION_MODE: master
+      MYSQL_REPLICATION_USER: repl_root
+      MYSQL_REPLICATION_PASSWORD: root
       MYSQL_DATABASE: project
-      MYSQL_USER: user
+      MYSQL_USER: root
       MYSQL_PASSWORD: root
+    networks:
+      - app-network
 
-  phpmyadmin: 
+  db-replica:
+    image: mysql:5.6
+    container_name: mysql_replica
+    depends_on:
+      - db-master
+    ports:
+      - "4406:3306"
+    restart: always
+    environment:
+      MYSQL_MASTER_ROOT_PASSWORD: root
+      MYSQL_REPLICATION_MODE: slave
+      MYSQL_REPLICATION_USER: repl_root
+      MYSQL_REPLICATION_PASSWORD: root
+      MYSQL_MASTER_HOST: db-master
+      MYSQL_MASTER_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: project
+    networks:
+      - app-network
+
+  phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: myadmin
     ports:
-      - "8082:80" 
-    environment: 
-        PMA_HOST: db
+      - "8082:80"
+    environment:
+        PMA_HOST: db-master
         PMA_USER: root
         PMA_PASSWORD: root
+        PMA_PORT: 3306
     depends_on:
-      - db 
+      - db-master
     restart: always
-
+    networks:
+      - app-network
   php-fpm:
     build: ./src/php
     container_name: myphp
@@ -38,7 +68,6 @@ services:
       - $HOME/Event-Scheduler/src:/var/www/html
     networks:
       - app-network
-
   nginx:
     image: nginx
     container_name: mynginx
@@ -53,9 +82,7 @@ services:
       - php-fpm
     restart: always
     networks:
-      - app-network    
-
+      - app-network
 networks:
   app-network:
-    driver: bridge    
-
+    driver: bridge

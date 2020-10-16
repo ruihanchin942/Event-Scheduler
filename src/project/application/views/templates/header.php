@@ -22,7 +22,7 @@
 	<ul class="navbar-nav my-lg-0">
 		<?php if(isset($this->session->userdata['logged_in'])) { ?>
 			<li class="nav-item">
-				<a href="<?php echo base_url(); ?>"> Logout </a>
+				<a href="<?php echo base_url(); ?>Users"> Logout </a>
 			</li>
 		<?php } ;?>
 	</ul>
