@@ -45,14 +45,6 @@ class Users extends CI_Controller
 				);
 				$result = $this->users_model->signup($data);
 				if ($result == TRUE) {
-					//send email
-					if ($this->users_model->sendEmail($this->input->post('email'))){
-						//successfully sent email
-						echo 'Email sent';
-					}else{
-						//error sending email
-						echo 'Fail to send email';
-					}
 					$data['message_display'] = 'Registration Successfully !';
 					$this->load->view('login_form', $data);
 				} else {

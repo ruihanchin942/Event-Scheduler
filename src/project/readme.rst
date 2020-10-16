@@ -68,3 +68,8 @@ Acknowledgement
 
 The CodeIgniter team would like to thank EllisLab, all the
 contributors to the CodeIgniter project and you, the CodeIgniter user.
+
+*****************
+Project Reference
+*****************
+1. UQ Annual Report 2019 https://about.uq.edu.au/files/5192/UQAnnualReport2019.pdf, Accessed: 15/10/2020

@@ -26,7 +26,9 @@ echo "</div>";
 			<input type="text" name="username" class="form-control" required autofocus>
 		</div>
 		<button type="submit" class="btn btn-primary btn-block">Submit</button> <br/>
-		<a href="<?php echo base_url(); ?>index.php/users/login">Back to Login </a>
+		<div id="mainFooter" style="bottom:0; position: fixed;">
+                        <a class="btn btn-primary mb-2" style="text-align: center" href="javascript:history.back()">Back</a>
+                </div>
 	</div>
 </div>
 </div>
